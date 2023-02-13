@@ -10,13 +10,13 @@ export class TextToggle {
 	}
 }
 
-export const buildToggle = (title, id, toggle) => {
-	$(`#${id}`).append($("<button/>").text(title));
-	$(`#${id}`).append($("<p/>").text(toggle.toggle()));
-	$(`#${id}`)
-		.children("button")
-		.click(function (e) {
-			e.preventDefault();
-			$(`#${id}`).children("p").text(toggle.toggle());
-		});
+export const buildToggle = (id, title, toggle) => {
+	const el = $(`#${id}`);
+	if (!el.length) throw new Error(`The element with id ${id} does not exist!`);
+	el.append($("<button/>").text(title));
+	el.append($("<p/>").text(toggle.toggle()));
+	el.children("button").click(function (e) {
+		e.preventDefault();
+		el.children("p").text(toggle.toggle());
+	});
 };
