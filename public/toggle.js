@@ -1,12 +1,15 @@
 export class TextToggle {
+	#options;
+	#text;
+	#i;
 	constructor(options) {
-		this._options = options;
-		this._i = 0;
+		this.#options = options;
+		this.#i = 0;
 	}
 	toggle() {
-		this._text = this._options[this._i];
-		this._i = ++this._i % this._options.length;
-		return this._text;
+		this.#text = this.#options[this.#i];
+		this.#i = ++this.#i % this.#options.length;
+		return this.#text;
 	}
 }
 
